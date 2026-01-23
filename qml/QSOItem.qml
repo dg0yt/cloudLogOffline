@@ -1,7 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
+import QtQuick.Controls.Material 2.4
 import Qt5Compat.GraphicalEffects
 
 SwipeDelegate {
@@ -45,7 +45,7 @@ SwipeDelegate {
                 anchors.topMargin: 5
                 font.wordSpacing: 0
                 font.capitalization: Font.Capitalize
-                color: "#607D8B"
+                color: Material.color(Material.BlueGrey, Material.Shade400)
                 font.pixelSize: 20
                 font.bold: true
             }
