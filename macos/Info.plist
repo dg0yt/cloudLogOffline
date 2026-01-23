@@ -26,6 +26,8 @@
 	<string>NSApplication</string>
 	<key>NSSupportsAutomaticGraphicsSwitching</key>
 	<true/>
+        <key>CFBundleAllowMixedLocalizations</key>
+        <true/>
         <key>NSLocationWhenInUseUsageDescription</key>
         <string>Locating repeaters near your location</string>
 </dict>
