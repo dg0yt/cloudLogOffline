@@ -188,9 +188,9 @@ Drawer {
             Component.onCompleted: currentIndex = 0
 
             delegate: DrawerItem {
-                model: items
                 width: parent.width
                 pageSelector: listView
+                visible: pageCommand !== "repeater" || settings.rbActive
 
                 onClicked: {
                     if (listView.currentIndex !== index)
