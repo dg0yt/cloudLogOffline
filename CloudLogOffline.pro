@@ -19,6 +19,9 @@ QT += core
 # cf. main.cpp
 !android:!ios: QT += widgets
 
+QMAKE_IOS_DEPLOYMENT_TARGET = 17
+
+
 CONFIG += c++14
 
 DEFINES += QT_DEPRECATED_WARNINGS

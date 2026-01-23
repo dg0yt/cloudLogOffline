@@ -191,6 +191,7 @@ Drawer {
                 model: items
                 width: parent.width
                 pageSelector: listView
+                visible: pageCommand !== "repeater" || settings.rbActive
 
                 onClicked: {
                     if (listView.currentIndex !== index)

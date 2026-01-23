@@ -100,11 +100,20 @@ if(NOT ANDROID AND NOT IOS)
     target_link_libraries(CloudLogOffline PRIVATE Qt::Widgets) # Cf. main.cpp
 endif()
 
-install(TARGETS CloudLogOffline)
+install(
+    TARGETS CloudLogOffline
+    RUNTIME DESTINATION .
+    BUNDLE DESTINATION ${CMAKE_SOURCE_DIR}
+)
 
 
 option(BUILD_TESTING "Build tests" ON)
 if(BUILD_TESTING)
     enable_testing()
     add_subdirectory(tests)
+endif()
+
+## This is required for localization permissions to work
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(${TARGET})
 endif()

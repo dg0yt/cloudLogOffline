@@ -165,7 +165,7 @@ void cloudlogManager::callbackCloudLog(QNetworkReply *rep)
 
             emit uploadSucessfull(((double)done)/((double)number));
         } else {
-            emit uploadFailed("Upload Error: " + jsonObject["reason"].toString());
+            emit uploadFailed("Status: " + jsonObject["status"].toString() +  ", Upload Error: " + jsonObject["reason"].toString());
         }
     }
 

@@ -26,7 +26,8 @@ ApplicationWindow {
         onTriggered: {
             console.log("Orientation changed")
             console.log("safe margins =", JSON.stringify(tools.getSafeAreaMargins(window)))
-            notchTop   = tools.getSafeAreaMargins(window)["top"]
+            //notchTop   = tools.getSafeAreaMargins(window)["top"]
+            notchTop = 0
             notchLeft  = tools.getSafeAreaMargins(window)["left"]
             notchRight = tools.getSafeAreaMargins(window)["right"]
             safeWidth  = window.width - tools.getSafeAreaMargins(window)["left"] - tools.getSafeAreaMargins(window)["right"]
@@ -40,7 +41,7 @@ ApplicationWindow {
 
     Component.onCompleted:  {
         tm.switchToLanguage(settings.language)
-        notchTop = tools.getSafeAreaMargins(window)["top"] // iPhoneX workaround
+        //notchTop = tools.getSafeAreaMargins(window)["top"] // iPhoneX workaround
 
         console.log("load settings.language:" + settings.language)
         console.log("safe margins =", JSON.stringify(tools.getSafeAreaMargins(window)))
@@ -116,7 +117,8 @@ ApplicationWindow {
     header: ToolBar {
         contentHeight: toolButton.implicitHeight + notchTop // iPhone X Workaround
 
-        Material.primary: Material.BlueGrey
+        //Material.primary: Material.BlueGrey
+        Material.primary:  Material.color(Material.BlueGrey, Material.Shade500)
 
         ToolButton {
             id: toolButton
@@ -234,6 +236,7 @@ ApplicationWindow {
             }
 
             ListElement {
+                pageCommand: "repeater"
                 pageTitle: qsTr ("Add Repeater QSO")
                 pageIcon: "\uf055"
                 onTriggered: function() {
