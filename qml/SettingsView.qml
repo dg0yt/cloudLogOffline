@@ -40,11 +40,12 @@ Page {
         if (clURL.startsWith("https://")) {
             clURL = clURL.substring(8, clURL.length);
         }
+
         settings.cloudLogURL       = clURL;
         settings.cloudLogSSL       = cloudLogSSL.currentText;
         settings.cloudLogSSLIndex  = cloudLogSSL.currentIndex;
         settings.cloudLogKey       = cloudLogKey.text;
-        settings.cloudLogStationId = cloudLogStationId.value;
+        settings.cloudLogStationId = cloudLogStationId.text;
         settings.cloudLogActive    = cloudLogSwitch.checked;
 
         settings.qrzUser   = qrzUser.text;
@@ -164,6 +165,8 @@ Page {
             Label {
                 id: callLabel
                 text: qsTr("Your Call") + ":"
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -173,16 +176,23 @@ Page {
                 onTextEdited: saveSettings()
                 onEditingFinished: saveSettings();
                 font.capitalization: Font.AllUppercase
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             Label {
                 id: gridsquareLabel
                 text: qsTr("Locator") + ":"
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             GridLayout {
                 id: locatorgrid
                 columns: 2
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
 
                 TextField {
                     id: gridsquare
@@ -204,11 +214,17 @@ Page {
             Label {
                 id: languageLabel
                 text: qsTr("Language") + ":"
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             ComboBox {
                 id: language
                 Layout.fillWidth: true
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+
                 model: [
                     "English",
                     "German",
@@ -241,12 +257,18 @@ Page {
                 id: cqModeLabel
                 text: qsTr("Mode") + ":"
                 visible: cqSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             ComboBox {
                 id: cqMode
                 Layout.fillWidth: true
                 visible: cqSwitch.checked
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+
                 model: [
                     "SSB",
                     "SSB / LSB",
@@ -295,12 +317,18 @@ Page {
                 id: cqFreqLabel
                 text: qsTr("QRG [MHz]") + ":"
                 visible: cqSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
                 id: cqFreq
                 Layout.fillWidth: true
                 visible: cqSwitch.checked
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+
                 text: settings.cqFreq
                 onTextEdited: saveSettings()
                 onEditingFinished: saveSettings();
@@ -321,10 +349,16 @@ Page {
                 id: contestNumberLabel
                 text: qsTr("Number / Province") + ":"
                 visible: contestSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             RowLayout {
                 visible: contestSwitch.checked
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+
                 TextField {
                     id: contestNumber
                     Layout.fillWidth: true
@@ -361,6 +395,8 @@ Page {
                 id: cloudLogURLLabel
                 text: qsTr("Hostname") + ":"
                 visible: cloudLogSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -369,20 +405,28 @@ Page {
                 visible: cloudLogSwitch.checked
                 text: settings.cloudLogURL
                 onEditingFinished: saveSettings()
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             Label {
                 id: sslLabel
                 text: qsTr("Encryption") + ":"
                 visible: cloudLogSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             ComboBox {
                 id: cloudLogSSL
                 Layout.fillWidth: true
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+
                 model: [
-                    "HTTP",
-                    "HTTPS"
+                    "HTTPS",
+                    "HTTP"
                 ]
 
                 Component.onCompleted: {
@@ -399,12 +443,17 @@ Page {
                 id: cloudLogKeyLabel
                 text: qsTr("API Key") + ":"
                 visible: cloudLogSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             GridLayout {
                 id: apiKey
                 visible: cloudLogSwitch.checked
                 columns: 2
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
 
                 TextField {
                     id: cloudLogKey
@@ -431,16 +480,20 @@ Page {
                 id: cloudLogStationIdLabel
                 text: qsTr("Station ID") + ":"
                 visible: cloudLogSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
-            SpinBox {
+            TextField {
                 id: cloudLogStationId
+                Layout.fillWidth: true
                 visible: cloudLogSwitch.checked
-                from: 1
-                to: 999
-                editable: true
-                value: settings.cloudLogStationId
-                onValueModified: saveSettings();
+                text: settings.cloudLogStationId
+                onTextEdited: saveSettings()
+                onEditingFinished: saveSettings()
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             // ----------------
@@ -458,6 +511,8 @@ Page {
                 id: qrzUserLabel
                 text: qsTr("Username") + ":"
                 visible: qrzSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -467,12 +522,17 @@ Page {
                 text: settings.qrzUser
                 onTextEdited: saveSettings();
                 onEditingFinished: saveSettings();
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             Label {
                 id: qrzPassLabel
                 text: qsTr("Password") + ":"
                 visible: qrzSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -483,6 +543,9 @@ Page {
                 text: settings.qrzPass
                 onTextEdited: saveSettings();
                 onEditingFinished: saveSettings();
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             // ----------------
@@ -500,6 +563,8 @@ Page {
                 id: rigHostLabel
                 text: qsTr("Hostname") + ":"
                 visible: rigSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -509,12 +574,17 @@ Page {
                 text: settings.rigHost
                 onTextEdited: saveSettings();
                 onEditingFinished: saveSettings();
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             Label {
                 id: rigPortLabel
                 text: qsTr("Port") + ":"
                 visible: rigSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -524,6 +594,9 @@ Page {
                 text: settings.rigPort
                 onTextEdited: saveSettings();
                 onEditingFinished: saveSettings();
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             // ----------------
@@ -541,6 +614,8 @@ Page {
                 id: mySotaLabel
                 text: qsTr("Reference") + ":"
                 visible: sotaSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -552,6 +627,9 @@ Page {
                 onEditingFinished: saveSettings();
                 font.capitalization: Font.AllUppercase
                 inputMethodHints: Qt.ImhUppercaseOnly
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             // ----------------
@@ -569,6 +647,8 @@ Page {
                 id: myWWFFLabel
                 text: qsTr("Reference") + ":"
                 visible: wwffSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -580,6 +660,9 @@ Page {
                 onEditingFinished: saveSettings();
                 font.capitalization: Font.AllUppercase
                 inputMethodHints: Qt.ImhUppercaseOnly
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
             // ----------------
 
@@ -596,6 +679,8 @@ Page {
                 id: myPotaLabel
                 text: qsTr("Reference") + ":"
                 visible: potaSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -607,6 +692,9 @@ Page {
                 onEditingFinished: saveSettings();
                 font.capitalization: Font.AllUppercase
                 inputMethodHints: Qt.ImhUppercaseOnly
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
 
             // ----------------
@@ -634,6 +722,8 @@ Page {
             Label {
                 text: qsTr("Radius") + ":"
                 visible: rbSwitch.checked
+                Layout.leftMargin: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
             }
 
             TextField {
@@ -645,6 +735,9 @@ Page {
                 onEditingFinished: saveSettings();
                 font.capitalization: Font.AllUppercase
                 inputMethodHints: Qt.ImhUppercaseOnly
+
+                Layout.rightMargin: 10
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             }
         }
     }
