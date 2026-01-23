@@ -25,6 +25,7 @@ Page {
 
         function onUploadFailed(error) {
             cloudLogMessage.text = error
+            console.log(error)
             cloudLogMessage.open()
         }
     }
